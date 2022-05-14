@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# TODO: Figure out a way to set secrets only once
+# MySql DB Settings
+export MYSQL_DB_HOST="localhost"
+export MYSQL_DB_PORT=3306
+export MYSQL_DB_USER="root"
+export MYSQL_DB_PASSWORD="root"
+# Postgres DB Settings
+export PG_DB_HOST="localhost"
+export PG_DB_PORT=5432
+export PG_DB_USER="postgres"
+export PG_DB_PASSWORD="your-super-secret-and-long-postgres-password"
+
+# Create sharpsell db (with launchpad & smartsell schema) & migrate from mysql to postgres
+# TODO: Figure out how to pass password as an argument to psql
+psql --username=$PG_DB_USER -W --host=$PG_DB_HOST -Atc "CREATE DATABASE sharpsell"
+./build/bin/pgloader mysql://$MYSQL_DB_USER:$MYSQL_DB_PASSWORD@$MYSQL_DB_HOST/launchpad postgresql://$PG_DB_USER:$PG_DB_PASSWORD@$PG_DB_HOST:$PG_DB_PORT/sharpsell
+./build/bin/pgloader mysql://$MYSQL_DB_USER:$MYSQL_DB_PASSWORD@$MYSQL_DB_HOST/smartsell postgresql://$PG_DB_USER:$PG_DB_PASSWORD@$PG_DB_HOST:$PG_DB_PORT/sharpsell
+
+# Drop deprecated tables
+psql --username=$PG_DB_USER -W --host=$PG_DB_HOST --dbname=sharpsell -Atc "DROP TABLE IF EXISTS launchpad.assets_data, launchpad.batch_has_db, launchpad.batch_has_feedback_form, launchpad.batch_has_onboard_quiz, launchpad.dashboard_user_courses_completion_rate, launchpad.dashboard_users_course_completion_avg, launchpad.dashboard_users_subtopic_completion_avg, launchpad.dashboard_users_subtopic_completion_rate, launchpad.feedback_questions, launchpad.in_app_notification, launchpad.logged_mobile_number, launchpad.logs, launchpad.meta_quiz_unit_temp, launchpad.meta_speciality_page, launchpad.meta_speciality_page_language, launchpad.meta_survey, launchpad.meta_survey_language, launchpad.meta_survey_questions, launchpad.meta_survey_questions_language, launchpad.meta_tags, launchpad.meta_video, launchpad.meta_video_language, launchpad.onboard_quiz, launchpad.reviewer_aggregate_score, launchpad.tiles_content_mapping, launchpad.user_challenges, launchpad.user_dublicate_uids, launchpad.user_has_survey_questions, launchpad.user_lms_logs, launchpad.user_logs, launchpad.user_parameters, launchpad.user_tms_logs, launchpad.users_details, launchpad.users_lms_data, launchpad.users_progress, launchpad.users_tms_data, launchpad.vc_dashboard_evaluation_param_completion_rate, launchpad.vc_evaluation_params, launchpad.vc_groups, launchpad.vc_mapping_challenge_to_evaluation, launchpad.vc_params_aggregate_score, launchpad.vc_review_suggestions, launchpad.vc_user_evaluation_score"
+psql --username=$PG_DB_USER -W --host=$PG_DB_HOST --dbname=sharpsell -Atc "DROP TABLE IF EXISTS smartsell.app_android, smartsell.app_ios, smartsell.assets, smartsell.country_has_companies, smartsell.daily_sync_time, smartsell.lookup_mapping_page_to_section, smartsell.lookup_page_types, smartsell.lookup_presentation_dataset, smartsell.lookup_presentation_display_data, smartsell.mapping_channel_to_presentation, smartsell.mapping_new_items, smartsell.mapping_timer_challenges_to_user_type, smartsell.mapping_user_home_banner, smartsell.mapping_user_home_content, smartsell.mapping_user_home_page, smartsell.mapping_user_home_top_slider, smartsell.mapping_user_types, smartsell.meta_channel, smartsell.meta_channels, smartsell.meta_configs, smartsell.meta_directories_versions, smartsell.meta_directory_display_types, smartsell.meta_fs_achievements, smartsell.meta_home_page_item_types, smartsell.meta_mm_achievements, smartsell.meta_page_master, smartsell.meta_page_types, smartsell.meta_pdfs_tags, smartsell.meta_pdfs_versions, smartsell.meta_posters_image_elements_versions, smartsell.meta_posters_tags, smartsell.meta_posters_text_elements_versions, smartsell.meta_posters_versions, smartsell.meta_presentation_category_master, smartsell.meta_presentation_dataset, smartsell.meta_presentation_master, smartsell.meta_recognitions, smartsell.meta_section_master, smartsell.meta_sub_channels, smartsell.meta_tags, smartsell.meta_target_group_master, smartsell.meta_timer_challenges_language, smartsell.meta_user_types, smartsell.meta_videos_tags, smartsell.meta_videos_versions, smartsell.old_mapping_page_to_section, smartsell.old_mapping_presentation_category_to_target, smartsell.old_mapping_presentation_to_section, smartsell.old_users_groups, smartsell.push_sync_time, smartsell.quiz_challenge, smartsell.quiz_question, smartsell.quiz_type, smartsell.user_achievements, smartsell.user_announcements, smartsell.user_favorites, smartsell.user_feedback, smartsell.user_share_data, smartsell.users_details, smartsell.users_has_quiz, smartsell.users_log"

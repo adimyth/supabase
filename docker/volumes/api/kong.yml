@@ -111,7 +111,35 @@ services:
           hide_credentials: true
       - name: request-transformer
         config:
-          add: 
+          add:
+            headers:
+              - Content-Profile:graphql_public
+      - name: acl
+        config:
+          hide_groups_header: true
+          allow:
+            - admin
+            - anon
+
+  ## Secure GraphQL routes
+  - name: graphql
+    _comment: "Hasura GraphQL: http://localhost:8000/v1/graphql/* -> http://graphql:8080/v1/graphql/*"
+    url: http://graphql:8080/v1/graphql/
+    routes:
+      - name: graphql-v1-all
+        strip_path: true
+        paths:
+          - /v1/graphql/
+    plugins:
+      # Adds CORS to a Service or a Route.
+      - name: cors
+      # Adds key authentication to a Service or a Route. Consumers add their API key in the header to authenticate their requests.
+      - name: key-auth
+        config:
+          hide_credentials: true
+      - name: request-transformer
+        config:
+          add:
             headers:
               - Content-Profile:graphql_public
       - name: acl

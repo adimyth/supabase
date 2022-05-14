@@ -1,0 +1,10 @@
+table:
+  schema: launchpad
+  name: meta_template_type
+configuration:
+  custom_root_fields: {}
+  column_config:
+    footer-text:
+      custom_name: footer_text
+  custom_column_names:
+    footer-text: footer_text

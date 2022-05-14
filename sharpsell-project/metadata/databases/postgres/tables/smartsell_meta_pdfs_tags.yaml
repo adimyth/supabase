@@ -1,0 +1,10 @@
+table:
+  schema: smartsell
+  name: meta_pdfs_tags
+object_relationships:
+  - name: meta_pdf
+    using:
+      foreign_key_constraint_on: pdf_id
+  - name: meta_tag
+    using:
+      foreign_key_constraint_on: tag_id

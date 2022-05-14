@@ -1,0 +1,3 @@
+table:
+  schema: launchpad
+  name: user_has_feedback_questions

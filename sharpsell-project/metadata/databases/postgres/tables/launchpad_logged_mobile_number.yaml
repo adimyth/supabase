@@ -1,0 +1,3 @@
+table:
+  schema: launchpad
+  name: logged_mobile_number

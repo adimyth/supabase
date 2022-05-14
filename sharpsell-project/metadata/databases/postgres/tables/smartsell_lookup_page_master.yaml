@@ -1,0 +1,17 @@
+table:
+  schema: smartsell
+  name: lookup_page_master
+object_relationships:
+  - name: company
+    using:
+      foreign_key_constraint_on: company_id
+array_relationships:
+  - name: lookup_page_master_to_lookup_mapping_page_to_section
+    using:
+      manual_configuration:
+        remote_table:
+          schema: smartsell
+          name: lookup_mapping_page_to_section
+        insertion_order: null
+        column_mapping:
+          id: page_id

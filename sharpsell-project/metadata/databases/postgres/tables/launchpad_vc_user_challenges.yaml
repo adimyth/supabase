@@ -1,0 +1,10 @@
+table:
+  schema: launchpad
+  name: vc_user_challenges
+object_relationships:
+  - name: user
+    using:
+      foreign_key_constraint_on: id_user
+  - name: vc_challenge
+    using:
+      foreign_key_constraint_on: id_challenge

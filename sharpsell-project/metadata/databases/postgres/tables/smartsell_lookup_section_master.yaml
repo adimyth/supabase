@@ -1,0 +1,22 @@
+table:
+  schema: smartsell
+  name: lookup_section_master
+array_relationships:
+  - name: lookup_section_master_to_lookup_mapping_page_to_section
+    using:
+      manual_configuration:
+        remote_table:
+          schema: smartsell
+          name: lookup_mapping_page_to_section
+        insertion_order: null
+        column_mapping:
+          id: section_id
+  - name: lookup_section_master_to_lookup_mapping_section_to_presentation
+    using:
+      manual_configuration:
+        remote_table:
+          schema: smartsell
+          name: lookup_mapping_section_to_presentation
+        insertion_order: null
+        column_mapping:
+          id: section_id

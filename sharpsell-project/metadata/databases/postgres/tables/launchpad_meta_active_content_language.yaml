@@ -1,0 +1,3 @@
+table:
+  schema: launchpad
+  name: meta_active_content_language

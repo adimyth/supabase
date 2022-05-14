@@ -1,0 +1,7 @@
+table:
+  schema: smartsell
+  name: lookup_product_faq
+object_relationships:
+  - name: lookup_product_section
+    using:
+      foreign_key_constraint_on: section_id

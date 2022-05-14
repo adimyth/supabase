@@ -1,0 +1,43 @@
+table:
+  schema: launchpad
+  name: managers
+object_relationships:
+  - name: manager_level
+    using:
+      foreign_key_constraint_on: level_id
+array_relationships:
+  - name: filters
+    using:
+      foreign_key_constraint_on:
+        column: manager_id
+        table:
+          schema: launchpad
+          name: filters
+  - name: managerToManagerMappingsBySubManagerId
+    using:
+      foreign_key_constraint_on:
+        column: sub_manager_id
+        table:
+          schema: launchpad
+          name: manager_to_manager_mapping
+  - name: manager_sessions
+    using:
+      foreign_key_constraint_on:
+        column: manager_id
+        table:
+          schema: launchpad
+          name: manager_session
+  - name: manager_to_manager_mappings
+    using:
+      foreign_key_constraint_on:
+        column: manager_id
+        table:
+          schema: launchpad
+          name: manager_to_manager_mapping
+  - name: manager_to_user_mappings
+    using:
+      foreign_key_constraint_on:
+        column: manager_id
+        table:
+          schema: launchpad
+          name: manager_to_user_mapping

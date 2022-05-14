@@ -1,0 +1,10 @@
+table:
+  schema: smartsell
+  name: company_user_group_configs
+object_relationships:
+  - name: company
+    using:
+      foreign_key_constraint_on: company_id
+  - name: company_group
+    using:
+      foreign_key_constraint_on: user_group_id

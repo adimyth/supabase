@@ -1,0 +1,7 @@
+table:
+  schema: smartsell
+  name: default_mapping_specific_user_directory_content
+object_relationships:
+  - name: company
+    using:
+      foreign_key_constraint_on: company_id

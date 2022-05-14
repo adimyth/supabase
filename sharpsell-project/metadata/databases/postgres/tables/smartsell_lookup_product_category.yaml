@@ -1,0 +1,15 @@
+table:
+  schema: smartsell
+  name: lookup_product_category
+object_relationships:
+  - name: company
+    using:
+      foreign_key_constraint_on: company_id
+array_relationships:
+  - name: lookup_products
+    using:
+      foreign_key_constraint_on:
+        column: category_id
+        table:
+          schema: smartsell
+          name: lookup_product

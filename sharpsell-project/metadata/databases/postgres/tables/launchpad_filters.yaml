@@ -1,0 +1,7 @@
+table:
+  schema: launchpad
+  name: filters
+object_relationships:
+  - name: manager
+    using:
+      foreign_key_constraint_on: manager_id

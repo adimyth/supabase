@@ -1,0 +1,10 @@
+table:
+  schema: launchpad
+  name: vc_params_aggregate_score
+object_relationships:
+  - name: vc_challenge
+    using:
+      foreign_key_constraint_on: id_challenge
+  - name: vc_evaluation_param
+    using:
+      foreign_key_constraint_on: id_evaluation

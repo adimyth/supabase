@@ -1,0 +1,25 @@
+table:
+  schema: launchpad
+  name: meta_sub_topic
+array_relationships:
+  - name: dashboard_activity_userssubtopic_quizscores
+    using:
+      foreign_key_constraint_on:
+        column: sub_topic_id
+        table:
+          schema: launchpad
+          name: dashboard_activity_userssubtopic_quizscore
+  - name: dashboard_learning_userssubtopic_quizscores
+    using:
+      foreign_key_constraint_on:
+        column: sub_topic_id
+        table:
+          schema: launchpad
+          name: dashboard_learning_userssubtopic_quizscore
+  - name: dashboard_users_subtopic_completion_rates
+    using:
+      foreign_key_constraint_on:
+        column: subtopic_id
+        table:
+          schema: launchpad
+          name: dashboard_users_subtopic_completion_rate

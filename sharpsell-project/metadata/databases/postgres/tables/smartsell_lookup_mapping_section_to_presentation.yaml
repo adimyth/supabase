@@ -1,0 +1,32 @@
+table:
+  schema: smartsell
+  name: lookup_mapping_section_to_presentation
+object_relationships:
+  - name: lookup_mapping_section_to_presentation_to_lookup_presentation_master
+    using:
+      manual_configuration:
+        remote_table:
+          schema: smartsell
+          name: lookup_presentation_master
+        insertion_order: null
+        column_mapping:
+          presentation_id: id
+  - name: lookup_mapping_section_to_presentation_to_lookup_section_master
+    using:
+      manual_configuration:
+        remote_table:
+          schema: smartsell
+          name: lookup_section_master
+        insertion_order: null
+        column_mapping:
+          section_id: id
+array_relationships:
+  - name: lookup_mapping_section_to_presentation_to_lookup_mapping_page_to_section
+    using:
+      manual_configuration:
+        remote_table:
+          schema: smartsell
+          name: lookup_mapping_page_to_section
+        insertion_order: null
+        column_mapping:
+          section_id: section_id

@@ -1,0 +1,10 @@
+table:
+  schema: launchpad
+  name: vc_mapping_challenge_to_category
+object_relationships:
+  - name: vc_category
+    using:
+      foreign_key_constraint_on: id_category
+  - name: vc_challenge
+    using:
+      foreign_key_constraint_on: id_challenge

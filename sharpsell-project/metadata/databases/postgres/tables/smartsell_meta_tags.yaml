@@ -1,0 +1,25 @@
+table:
+  schema: smartsell
+  name: meta_tags
+array_relationships:
+  - name: meta_pdfs_tags
+    using:
+      foreign_key_constraint_on:
+        column: tag_id
+        table:
+          schema: smartsell
+          name: meta_pdfs_tags
+  - name: meta_posters_tags
+    using:
+      foreign_key_constraint_on:
+        column: tag_id
+        table:
+          schema: smartsell
+          name: meta_posters_tags
+  - name: meta_videos_tags
+    using:
+      foreign_key_constraint_on:
+        column: tag_id
+        table:
+          schema: smartsell
+          name: meta_videos_tags

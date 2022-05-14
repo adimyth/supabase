@@ -1,0 +1,39 @@
+table:
+  schema: launchpad
+  name: vc_category
+array_relationships:
+  - name: vc_batch_has_categories
+    using:
+      foreign_key_constraint_on:
+        column: id_category
+        table:
+          schema: launchpad
+          name: vc_batch_has_category
+  - name: vc_batch_has_reviewers
+    using:
+      foreign_key_constraint_on:
+        column: id_category
+        table:
+          schema: launchpad
+          name: vc_batch_has_reviewer
+  - name: vc_category_has_reviewers
+    using:
+      foreign_key_constraint_on:
+        column: id_category
+        table:
+          schema: launchpad
+          name: vc_category_has_reviewer
+  - name: vc_dashboard_categories_completion_rates
+    using:
+      foreign_key_constraint_on:
+        column: category_id
+        table:
+          schema: launchpad
+          name: vc_dashboard_categories_completion_rate
+  - name: vc_mapping_challenge_to_categories
+    using:
+      foreign_key_constraint_on:
+        column: id_category
+        table:
+          schema: launchpad
+          name: vc_mapping_challenge_to_category

@@ -1,0 +1,20 @@
+table:
+  schema: smartsell
+  name: meta_timer_challenges
+array_relationships:
+  - name: meta_timer_challenges_to_meta_timer_challenges_questions
+    using:
+      manual_configuration:
+        remote_table:
+          schema: smartsell
+          name: meta_timer_challenges_questions
+        insertion_order: null
+        column_mapping:
+          id: quiz_id
+  - name: users_timer_challenges
+    using:
+      foreign_key_constraint_on:
+        column: quiz_id
+        table:
+          schema: smartsell
+          name: users_timer_challenges

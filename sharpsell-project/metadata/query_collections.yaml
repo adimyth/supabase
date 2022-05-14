@@ -1,0 +1,329 @@
+- name: allowed-queries
+  definition:
+    queries:
+      - name: smartsell_admin_index
+        query: |
+          query index ($start_index: Int = 0, $limit_index: Int = 5, $search_string: String = "%") {
+          	admins: smartsell_admin(where: {_or:[{name:{_ilike:$search_string}},{username:{_ilike:$search_string}}]}, offset: $start_index, limit: $limit_index, order_by: {created_at:desc}) {
+          		id
+          		id_role
+          		username
+          		parent_user
+          		name
+          		role: admin_to_role {
+          			id_role
+          			name
+          		}
+          	}
+          	admin_count: smartsell_admin_aggregate {
+          		aggregate {
+          			count
+          		}
+          	}
+          }
+      - name: smartsell_admin_update
+        query: |
+          mutation update ($admin_id: bigint!, $admin: smartsell_admin_set_input!) {
+          	update_smartsell_admin_by_pk(_set: $admin, pk_columns: {id:$admin_id}) {
+          		id
+          	}
+          }
+      - name: smartsell_admin_destroy
+        query: |
+          mutation destroy ($admin_ids: [bigint!]!) {
+          	delete_smartsell_admin(where: {id:{_in:$admin_ids}}) {
+          		affected_rows
+          	}
+          }
+      - name: smartsell_getAllAdminsForCompany
+        query: |
+          query getAllAdminsForCompany ($search_string: String = "%") {
+          	admins: smartsell_admin(where: {_or:[{name:{_ilike:$search_string}},{username:{_ilike:$search_string}}]}) {
+          		id
+          		id_role
+          		username
+          		parent_user
+          		name
+          		role: admin_to_role {
+          			id_role
+          			name
+          		}
+          	}
+          }
+      - name: smartsell_getMetaProperties
+        query: |
+          query getMetaProperties {
+          	smartsell_users_meta_properties {
+          		id
+          		name
+          		type
+          		created_at
+          		updated_at
+          	}
+          }
+      - name: smartsell_getAllTimerChallenges
+        query: |
+          query getAllTimerChallenges ($company_id: bigint!, $start_index: Int! = 0, $limit_index: Int! = 5, $search_string: String = "%") {
+          	meta_timer_challenges: smartsell_meta_timer_challenges(where: {_and:[{_or:[{name:{_ilike:$search_string}},{description:{_ilike:$search_string}}]},{company_id:{_eq:$company_id}},{is_freezed:{_eq:1}}]}, limit: $limit_index, offset: $start_index, order_by: {start_time:asc}) {
+          		id
+          		company_id
+          		name
+          		description
+          		quiz_type
+          		url
+          		leaderboard_flag
+          		leaderboard_type
+          		question_json
+          		answer_result
+          		show_explanation
+          		max_duration
+          		start_time
+          		end_time
+          		contribution
+          		created_at
+          		updated_at
+          		question_count: meta_timer_challenges_to_meta_timer_challenges_questions_aggregate {
+          			aggregate {
+          				count
+          			}
+          		}
+          	}
+          	challenges_count: smartsell_meta_timer_challenges_aggregate(where: {company_id:{_eq:$company_id}}) {
+          		aggregate {
+          			count
+          		}
+          	}
+          }
+      - name: smartsell_fetchCompanyDetails
+        query: |
+          query fetchCompanyDetails ($admin_id: Int!) {
+          	smartsell_company_admins(where: {admin_id:{_eq:$admin_id}}) {
+          		company: company_admins_to_company {
+          			id_company
+          			unique_id
+          			name
+          			short_name
+          			users_count: users_aggregate(where: {test_user:{_eq:0}}) {
+          				aggregate {
+          					count
+          				}
+          			}
+          		}
+          	}
+          }
+      - name: smartsell_addAdminToCompany
+        query: |
+          mutation addAdminToCompany ($company_id: Int!, $selected_admins: [smartsell_company_admins_insert_input!]!) {
+          	delete_smartsell_company_admins(where: {company_id:{_eq:$company_id}}) {
+          		affected_rows
+          	}
+          	insert_smartsell_company_admins(objects: $selected_admins) {
+          		affected_rows
+          	}
+          }
+      - name: smartsell_getCompanyProperties
+        query: |
+          query getCompanyProperties ($idCompany: bigint!) {
+          	smartsell_company_user_property(where: {company_id:{_eq:$idCompany}}) {
+          		id
+          		is_unique
+          		is_mandatory
+          		display_name
+          		property_name
+          		status
+          		created_at
+          		updated_at
+          	}
+          }
+      - name: smartsell_getDistinctUserProperities
+        query: |
+          query getDistinctUserProperities ($meta_type: smartsell_users_select_column!) {
+          	smartsell_users(distinct_on: [$meta_type]) {
+          		channel_name
+          		city_name
+          		company_id
+          		country_code
+          		designation
+          		location
+          		middle_name
+          	}
+          }
+      - name: smartsell_company_deleteExistingCompanyProperty
+        query: |
+          mutation deleteExistingCompanyProperty ($idCompany: bigint!, $id: Int!) {
+          	delete_smartsell_company_user_property(where: {_and:[{id:{_eq:$id}},{company_id:{_eq:$idCompany}}]}) {
+          		affected_rows
+          	}
+          }
+      - name: smartsell_company_getAppConfigurations
+        query: |
+          query getAppConfigurations ($id_company: bigint!) {
+          	company: smartsell_company(where: {id_company:{_eq:$id_company}}) {
+          		app_configs
+          		signatures
+          		signatureformat
+          		launchpad_api_url
+          		launchpad_admin_api_url
+          	}
+          	company_properties: smartsell_company_user_property {
+          		id
+          		company_id
+          		meta_name
+          		display_name
+          		is_mandatory
+          		is_unique
+          		status
+          		property_name
+          		property_type
+          		updated_at
+          		created_at
+          	}
+          }
+      - name: smartsell_updateCompanySignature
+        query: |
+          mutation updateCompanySignature ($id_company: bigint!, $signatures: String!, $signatureformat: String!) {
+          	update_smartsell_company(where: {id_company:{_eq:$id_company}}, _set: {signatures:$signatures,signatureformat:$signatureformat}) {
+          		affected_rows
+          	}
+          }
+      - name: smartsell_getAllCountriesForCompany
+        query: |
+          query getAllCountriesForCompany ($search_string: String = "%") {
+          	smartsell_country(where: {_and:[{name:{_ilike:$search_string}},{status:{_eq:1}}]}) {
+          		id
+          		name
+          		code
+          		status
+          		company: country_to_country_has_companies {
+          			company_id
+          		}
+          	}
+          }
+      - name: smartsell_addCountryToCompany
+        query: |
+          mutation addCountryToCompany ($company_id: Int!, $selected_countries: [smartsell_company_countries_insert_input!]!) {
+          	delete_smartsell_company_countries(where: {company_id:{_eq:$company_id}}) {
+          		affected_rows
+          	}
+          	insert_smartsell_company_countries(objects: $selected_countries) {
+          		affected_rows
+          	}
+          }
+      - name: smartsell_companies_index
+        query: |
+          query getAllCompanies ($start_index: Int = 0, $limit_index: Int = 5, $search_string: String = "%") {
+          	companies: smartsell_company(where: {_or:[{name:{_ilike:$search_string}},{short_name:{_ilike:$search_string}}]}, offset: $start_index, limit: $limit_index) {
+          		id_company
+          		unique_id
+          		name
+          		short_name
+          		address
+          		app_configs
+          		signatures
+          		signatureformat
+          		launchpad_api_url
+          		launchpad_admin_api_url
+          		admins: company_to_company_admins {
+          			admin_id
+          		}
+          	}
+          	companeis_count: smartsell_company_aggregate {
+          		aggregate {
+          			count
+          		}
+          	}
+          }
+      - name: smartsell_company_destroy
+        query: |
+          mutation destroy ($ids: [bigint!]!) {
+          	delete_smartsell_company(where: {id_company:{_in:$ids}}) {
+          		affected_rows
+          	}
+          }
+      - name: smartsell_language_index
+        query: |
+          query fetchAllLanguages {
+          	smartsell_meta_languages {
+          		id
+          		language
+          		reg_language
+          		short_language
+          		sequence
+          	}
+          }
+      - name: smartsell_admin_store
+        query: |
+          mutation store ($admin: smartsell_admin_insert_input!) {
+          	insert_smartsell_admin_one(object: $admin) {
+          		id
+          	}
+          }
+      - name: smartsell_role_index
+        query: |
+          query index {
+          	smartsell_role(where: {status:{_eq:1}}) {
+          		id_role
+          		name
+          		roles
+          		status
+          		created_at
+          		updated_at
+          	}
+          }
+      - name: smartsell_getCompanyBranding
+        query: |
+          query getCompanyBranding ($id_company: bigint!) {
+          	smartsell_company_branding(where: {company_id:{_eq:$id_company}}, limit: 1) {
+          		accent_dark
+          		accent_light
+          		company_id
+          		font_color_dark
+          		font_color_light
+          		font_family_primary
+          		font_family_secondary
+          		heading1_font
+          		heading2_font
+          		heading3_font
+          		heading4_font
+          		heading5_font
+          		home_screen_layout
+          		homepage_configs
+          		icon_back
+          		icon_company
+          		icon_dvc
+          		icon_filter
+          		icon_launchpad
+          		icon_leadgen
+          		icon_mcolletral
+          		icon_potd
+          		icon_ppresentation
+          		icon_profile
+          		icon_qlinks
+          		icon_roleplay
+          		icon_search
+          		icon_share
+          		icon_timer_challenges_duration
+          		icon_sync
+          		icon_timer_challenges_question
+          		icon_timer_challenges_score
+          		icon_timer_challenges_end_time
+          		icon_timerchallenge
+          		paragraph1_font
+          		paragraph2_font
+          		paragraph3_font
+          		poster_salutation
+          		poster_signature
+          		primary_dark
+          		primary_light
+          		secondary_dark
+          		secondary_light
+          		text_configurations
+          	}
+          }
+      - name: smartsell_uploadBranding
+        query: |
+          mutation uploadBranding ($company_id: bigint!, $primary_dark: String, $primary_light: String, $accent_dark: String, $accent_light: String, $secondary_dark: String, $secondary_light: String, $font_color_dark: String, $font_color_light: String, $heading1_font: String, $heading2_font: String, $heading3_font: String, $heading4_font: String, $heading5_font: String, $paragraph1_font: String, $paragraph2_font: String, $paragraph3_font: String, $icon_mcollateral: String, $icon_ppresentation: String, $icon_potd: String, $icon_dvc: String, $icon_qlinks: String, $icon_timerchallenge: String, $icon_back: String, $icon_search: String, $icon_share: String, $icon_filter: String, $text_configurations: String, $icon_profile: String, $icon_sync: String, $icon_timer_challenges_duration: String, $icon_timer_challenges_end_time: String, $icon_timer_challenges_score: String, $icon_timer_challenges_question: String, $icon_company: String, $icon_launchpad: String, $icon_leadgen: String, $poster_signature: String, $poster_salutation: String, $icon_roleplay: String, $homepage_configs: String, $home_screen_layout: String) {
+          	update_smartsell_company_branding(where: {company_id:{_eq:$company_id}}, _set: {company_id:$company_id,primary_dark:$primary_dark,primary_light:$primary_light,accent_dark:$accent_dark,accent_light:$accent_light,secondary_dark:$secondary_dark,secondary_light:$secondary_light,font_color_dark:$font_color_dark,font_color_light:$font_color_light,heading1_font:$heading1_font,heading2_font:$heading2_font,heading3_font:$heading3_font,heading4_font:$heading4_font,heading5_font:$heading5_font,paragraph1_font:$paragraph1_font,paragraph2_font:$paragraph2_font,paragraph3_font:$paragraph3_font,icon_mcollateral:$icon_mcollateral,icon_ppresentation:$icon_ppresentation,icon_potd:$icon_potd,icon_dvc:$icon_dvc,icon_qlinks:$icon_qlinks,icon_timerchallenge:$icon_timerchallenge,icon_back:$icon_back,icon_search:$icon_search,icon_share:$icon_share,icon_filter:$icon_filter,text_configurations:$text_configurations,icon_profile:$icon_profile,icon_sync:$icon_sync,icon_timer_challenges_duration:$icon_timer_challenges_duration,icon_timer_challenges_end_time:$icon_timer_challenges_end_time,icon_timer_challenges_score:$icon_timer_challenges_score,icon_timer_challenges_question:$icon_timer_challenges_question,icon_company:$icon_company,icon_launchpad:$icon_launchpad,icon_leadgen:$icon_leadgen,poster_signature:$poster_signature,poster_salutation:$poster_salutation,icon_roleplay:$icon_roleplay,homepage_configs:$homepage_configs,home_screen_layout:$home_screen_layout}) {
+          		affected_rows
+          	}
+          }

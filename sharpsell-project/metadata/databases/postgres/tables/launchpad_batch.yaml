@@ -1,0 +1,13 @@
+table:
+  schema: launchpad
+  name: batch
+array_relationships:
+  - name: batch_to_batch_has_users
+    using:
+      manual_configuration:
+        remote_table:
+          schema: launchpad
+          name: batch_has_users
+        insertion_order: null
+        column_mapping:
+          batch_id: batch_id

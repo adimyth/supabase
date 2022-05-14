@@ -1,0 +1,10 @@
+table:
+  schema: smartsell
+  name: group_quick_links
+object_relationships:
+  - name: company_group
+    using:
+      foreign_key_constraint_on: group_id
+  - name: lookup_quick_link
+    using:
+      foreign_key_constraint_on: quick_link_id

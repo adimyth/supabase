@@ -1,0 +1,3 @@
+table:
+  schema: launchpad
+  name: vc_user_evaluation_score

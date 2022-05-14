@@ -1,0 +1,10 @@
+table:
+  schema: launchpad
+  name: manager_to_manager_mapping
+object_relationships:
+  - name: manager
+    using:
+      foreign_key_constraint_on: manager_id
+  - name: managerBySubManagerId
+    using:
+      foreign_key_constraint_on: sub_manager_id

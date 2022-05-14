@@ -1,0 +1,3 @@
+table:
+  schema: smartsell
+  name: lookup_page_master_text_elements

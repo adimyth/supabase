@@ -1,0 +1,3 @@
+table:
+  schema: launchpad
+  name: meta_course_type_language

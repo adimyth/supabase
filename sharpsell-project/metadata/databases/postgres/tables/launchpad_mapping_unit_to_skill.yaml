@@ -1,0 +1,3 @@
+table:
+  schema: launchpad
+  name: mapping_unit_to_skill

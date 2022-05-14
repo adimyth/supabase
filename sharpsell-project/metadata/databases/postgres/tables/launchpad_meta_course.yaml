@@ -1,0 +1,32 @@
+table:
+  schema: launchpad
+  name: meta_course
+array_relationships:
+  - name: dashboard_activity_userscourse_quizscores
+    using:
+      foreign_key_constraint_on:
+        column: course_id
+        table:
+          schema: launchpad
+          name: dashboard_activity_userscourse_quizscore
+  - name: dashboard_learning_userscourse_quizscores
+    using:
+      foreign_key_constraint_on:
+        column: course_id
+        table:
+          schema: launchpad
+          name: dashboard_learning_userscourse_quizscore
+  - name: dashboard_user_courses_completion_rates
+    using:
+      foreign_key_constraint_on:
+        column: course_id
+        table:
+          schema: launchpad
+          name: dashboard_user_courses_completion_rate
+  - name: users_certifications
+    using:
+      foreign_key_constraint_on:
+        column: course_id
+        table:
+          schema: launchpad
+          name: users_certifications

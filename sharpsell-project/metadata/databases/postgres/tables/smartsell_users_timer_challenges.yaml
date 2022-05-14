@@ -1,0 +1,7 @@
+table:
+  schema: smartsell
+  name: users_timer_challenges
+object_relationships:
+  - name: meta_timer_challenge
+    using:
+      foreign_key_constraint_on: quiz_id

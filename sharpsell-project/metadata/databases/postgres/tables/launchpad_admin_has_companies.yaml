@@ -1,0 +1,3 @@
+table:
+  schema: launchpad
+  name: admin_has_companies

@@ -1,0 +1,10 @@
+table:
+  schema: launchpad
+  name: vc_dashboard_categories_completion_rate
+object_relationships:
+  - name: user
+    using:
+      foreign_key_constraint_on: user_id
+  - name: vc_category
+    using:
+      foreign_key_constraint_on: category_id

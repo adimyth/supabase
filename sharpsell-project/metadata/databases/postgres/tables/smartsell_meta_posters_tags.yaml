@@ -1,0 +1,10 @@
+table:
+  schema: smartsell
+  name: meta_posters_tags
+object_relationships:
+  - name: meta_poster
+    using:
+      foreign_key_constraint_on: poster_id
+  - name: meta_tag
+    using:
+      foreign_key_constraint_on: tag_id

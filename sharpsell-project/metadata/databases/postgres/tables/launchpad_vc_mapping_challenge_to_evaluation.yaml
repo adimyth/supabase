@@ -1,0 +1,10 @@
+table:
+  schema: launchpad
+  name: vc_mapping_challenge_to_evaluation
+object_relationships:
+  - name: vc_challenge
+    using:
+      foreign_key_constraint_on: id_challenge
+  - name: vc_evaluation_param
+    using:
+      foreign_key_constraint_on: id_evaluation

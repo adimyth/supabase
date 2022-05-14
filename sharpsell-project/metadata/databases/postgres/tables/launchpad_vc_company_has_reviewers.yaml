@@ -1,0 +1,10 @@
+table:
+  schema: launchpad
+  name: vc_company_has_reviewers
+object_relationships:
+  - name: company
+    using:
+      foreign_key_constraint_on: id_company
+  - name: vc_reviewer
+    using:
+      foreign_key_constraint_on: id_reviewer

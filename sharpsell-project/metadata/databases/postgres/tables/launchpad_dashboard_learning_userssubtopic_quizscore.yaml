@@ -1,0 +1,10 @@
+table:
+  schema: launchpad
+  name: dashboard_learning_userssubtopic_quizscore
+object_relationships:
+  - name: meta_sub_topic
+    using:
+      foreign_key_constraint_on: sub_topic_id
+  - name: user
+    using:
+      foreign_key_constraint_on: user_id

@@ -1,0 +1,3 @@
+table:
+  schema: launchpad
+  name: push_notification_targets

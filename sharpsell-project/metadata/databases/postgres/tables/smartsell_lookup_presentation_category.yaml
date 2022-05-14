@@ -1,0 +1,13 @@
+table:
+  schema: smartsell
+  name: lookup_presentation_category
+array_relationships:
+  - name: lookup_presentation_category_to_lookup_presentation_master
+    using:
+      manual_configuration:
+        remote_table:
+          schema: smartsell
+          name: lookup_presentation_master
+        insertion_order: null
+        column_mapping:
+          id: category_id

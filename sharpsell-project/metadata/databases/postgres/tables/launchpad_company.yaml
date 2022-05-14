@@ -1,0 +1,11 @@
+table:
+  schema: launchpad
+  name: company
+array_relationships:
+  - name: vc_company_has_reviewers
+    using:
+      foreign_key_constraint_on:
+        column: id_company
+        table:
+          schema: launchpad
+          name: vc_company_has_reviewers

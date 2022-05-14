@@ -1,0 +1,10 @@
+table:
+  schema: launchpad
+  name: users_certifications
+object_relationships:
+  - name: meta_course
+    using:
+      foreign_key_constraint_on: course_id
+  - name: user
+    using:
+      foreign_key_constraint_on: user_id

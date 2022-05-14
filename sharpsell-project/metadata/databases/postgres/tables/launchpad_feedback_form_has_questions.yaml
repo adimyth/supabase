@@ -1,0 +1,3 @@
+table:
+  schema: launchpad
+  name: feedback_form_has_questions

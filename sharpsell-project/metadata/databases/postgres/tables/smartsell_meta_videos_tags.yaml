@@ -1,0 +1,10 @@
+table:
+  schema: smartsell
+  name: meta_videos_tags
+object_relationships:
+  - name: meta_tag
+    using:
+      foreign_key_constraint_on: tag_id
+  - name: meta_video
+    using:
+      foreign_key_constraint_on: video_id

@@ -1,0 +1,7 @@
+table:
+  schema: launchpad
+  name: vc_batch_has_category
+object_relationships:
+  - name: vc_category
+    using:
+      foreign_key_constraint_on: id_category

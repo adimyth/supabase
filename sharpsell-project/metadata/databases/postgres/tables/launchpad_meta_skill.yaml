@@ -1,0 +1,18 @@
+table:
+  schema: launchpad
+  name: meta_skill
+array_relationships:
+  - name: dashboard_activity_usersskill_quizscores
+    using:
+      foreign_key_constraint_on:
+        column: skill_id
+        table:
+          schema: launchpad
+          name: dashboard_activity_usersskill_quizscore
+  - name: dashboard_learning_usersskill_quizscores
+    using:
+      foreign_key_constraint_on:
+        column: skill_id
+        table:
+          schema: launchpad
+          name: dashboard_learning_usersskill_quizscore

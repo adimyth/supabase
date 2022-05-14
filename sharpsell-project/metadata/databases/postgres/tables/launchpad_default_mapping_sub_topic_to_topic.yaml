@@ -1,0 +1,3 @@
+table:
+  schema: launchpad
+  name: default_mapping_sub_topic_to_topic

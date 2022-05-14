@@ -1,0 +1,15 @@
+table:
+  schema: smartsell
+  name: meta_posters
+object_relationships:
+  - name: company
+    using:
+      foreign_key_constraint_on: company_id
+array_relationships:
+  - name: meta_posters_tags
+    using:
+      foreign_key_constraint_on:
+        column: poster_id
+        table:
+          schema: smartsell
+          name: meta_posters_tags

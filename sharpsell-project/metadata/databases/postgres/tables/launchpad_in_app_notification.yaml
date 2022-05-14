@@ -1,0 +1,3 @@
+table:
+  schema: launchpad
+  name: in_app_notification

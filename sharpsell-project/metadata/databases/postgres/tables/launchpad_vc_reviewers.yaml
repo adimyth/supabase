@@ -1,0 +1,25 @@
+table:
+  schema: launchpad
+  name: vc_reviewers
+array_relationships:
+  - name: vc_batch_has_reviewers
+    using:
+      foreign_key_constraint_on:
+        column: id_reviewer
+        table:
+          schema: launchpad
+          name: vc_batch_has_reviewer
+  - name: vc_category_has_reviewers
+    using:
+      foreign_key_constraint_on:
+        column: id_reviewer
+        table:
+          schema: launchpad
+          name: vc_category_has_reviewer
+  - name: vc_company_has_reviewers
+    using:
+      foreign_key_constraint_on:
+        column: id_reviewer
+        table:
+          schema: launchpad
+          name: vc_company_has_reviewers

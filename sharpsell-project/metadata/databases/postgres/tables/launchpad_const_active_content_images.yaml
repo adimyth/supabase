@@ -1,0 +1,11 @@
+table:
+  schema: launchpad
+  name: const_active_content_images
+array_relationships:
+  - name: const_active_content_image_tags
+    using:
+      foreign_key_constraint_on:
+        column: image_id
+        table:
+          schema: launchpad
+          name: const_active_content_image_tags

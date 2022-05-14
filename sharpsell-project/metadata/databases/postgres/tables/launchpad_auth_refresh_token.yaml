@@ -1,0 +1,3 @@
+table:
+  schema: launchpad
+  name: auth_refresh_token

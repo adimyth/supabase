@@ -1,0 +1,10 @@
+table:
+  schema: smartsell
+  name: group_livestreams
+object_relationships:
+  - name: company_group
+    using:
+      foreign_key_constraint_on: group_id
+  - name: meta_livestream
+    using:
+      foreign_key_constraint_on: livestream_id

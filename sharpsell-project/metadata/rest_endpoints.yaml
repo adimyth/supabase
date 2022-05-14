@@ -1,0 +1,199 @@
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: smartsell_addAdminToCompany
+  url: smartsell/addAdminToCompany
+  methods:
+    - POST
+  name: smartsell_addAdminToCompany
+  comment: Adds an admin to a company
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: smartsell_addCountryToCompany
+  url: smartsell/addCountryToCompany
+  methods:
+    - POST
+  name: smartsell_addCountryToCompany
+  comment: Adds a country to a company
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: smartsell_admin_update
+  url: smartsell/admin
+  methods:
+    - PATCH
+    - PUT
+  name: smartsell_admin_update
+  comment: Update a smartsell admin
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: smartsell_admin_destroy
+  url: smartsell/admin
+  methods:
+    - DELETE
+  name: smartsell_admin_destroy
+  comment: Deletes smartsell admins
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: smartsell_admin_store
+  url: smartsell/admin
+  methods:
+    - POST
+  name: smartsell_admin_store
+  comment: Create a smartsell admin
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: smartsell_admin_index
+  url: smartsell/admin/index
+  methods:
+    - POST
+  name: smartsell_admin_index
+  comment: Get all admins
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: smartsell_companies_index
+  url: smartsell/company
+  methods:
+    - GET
+  name: smartsell_companies_index
+  comment: Fetches all companies
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: smartsell_company_destroy
+  url: smartsell/company
+  methods:
+    - DELETE
+  name: smartsell_company_destroy
+  comment: Destroys companies given ids
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: smartsell_company_deleteExistingCompanyProperty
+  url: smartsell/deleteExistingCompanyProperty
+  methods:
+    - DELETE
+  name: smartsell_company_deleteExistingCompanyProperty
+  comment: Deletes a meta property for a company
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: smartsell_fetchCompanyDetails
+  url: smartsell/fetchCompanyDetails/:admin_id
+  methods:
+    - GET
+  name: smartsell_fetchCompanyDetails
+  comment: Fetches Company details like admin & user count
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: smartsell_getAllAdminsForCompany
+  url: smartsell/getAllAdminsForCompany
+  methods:
+    - POST
+  name: smartsell_getAllAdminsForCompany
+  comment: Get all admins for a company
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: smartsell_getAllCountriesForCompany
+  url: smartsell/getAllCountriesForCompany
+  methods:
+    - POST
+  name: smartsell_getAllCountriesForCompany
+  comment: Gets all countries where "status=1"
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: smartsell_getAllTimerChallenges
+  url: smartsell/getAllTimerChallenges
+  methods:
+    - POST
+  name: smartsell_getAllTimerChallenges
+  comment: Fetches all timer challenges
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: smartsell_company_getAppConfigurations
+  url: smartsell/getAppConfigurations/:id_company
+  methods:
+    - GET
+  name: smartsell_company_getAppConfigurations
+  comment: Fetches app configurations for a company
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: smartsell_getCompanyBranding
+  url: smartsell/getCompanyBranding
+  methods:
+    - POST
+  name: smartsell_getCompanyBranding
+  comment: Gets company branding for a given company
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: smartsell_getCompanyProperties
+  url: smartsell/getCompanyProperties/:idCompany
+  methods:
+    - GET
+  name: smartsell_getCompanyProperties
+  comment: Fetches company properties for a given company id
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: smartsell_getDistinctUserProperities
+  url: smartsell/getDistinctUserProperities
+  methods:
+    - POST
+  name: smartsell_getDistinctUserProperities
+  comment: Fetches distinct values for a given user property (meta1, meta2, ...., meta20)
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: smartsell_getMetaProperties
+  url: smartsell/getMetaProperties
+  methods:
+    - GET
+  name: smartsell_getMetaProperties
+  comment: Get admin meta properties
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: smartsell_language_index
+  url: smartsell/languages
+  methods:
+    - GET
+  name: smartsell_language_index
+  comment: Fetches all languages
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: smartsell_role_index
+  url: smartsell/role
+  methods:
+    - GET
+  name: smartsell_role_index
+  comment: Fetches all roles
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: smartsell_updateCompanySignature
+  url: smartsell/updateCompanySignature
+  methods:
+    - POST
+  name: smartsell_updateCompanySignature
+  comment: Updates company signature
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: smartsell_uploadBranding
+  url: smartsell/uploadBranding
+  methods:
+    - POST
+  name: smartsell_uploadBranding
+  comment: Uploads a branding for a given company

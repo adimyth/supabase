@@ -1,0 +1,202 @@
+table:
+  schema: smartsell
+  name: company
+array_relationships:
+  - name: app_constants
+    using:
+      foreign_key_constraint_on:
+        column: company_id
+        table:
+          schema: smartsell
+          name: app_constants
+  - name: company_brandings
+    using:
+      foreign_key_constraint_on:
+        column: company_id
+        table:
+          schema: smartsell
+          name: company_branding
+  - name: company_groups
+    using:
+      foreign_key_constraint_on:
+        column: company_id
+        table:
+          schema: smartsell
+          name: company_groups
+  - name: company_to_company_admins
+    using:
+      manual_configuration:
+        remote_table:
+          schema: smartsell
+          name: company_admins
+        insertion_order: null
+        column_mapping:
+          id_company: company_id
+  - name: company_user_group_configs
+    using:
+      foreign_key_constraint_on:
+        column: company_id
+        table:
+          schema: smartsell
+          name: company_user_group_configs
+  - name: company_user_properties
+    using:
+      foreign_key_constraint_on:
+        column: company_id
+        table:
+          schema: smartsell
+          name: company_user_property
+  - name: default_mapping_specific_user_directory_contents
+    using:
+      foreign_key_constraint_on:
+        column: company_id
+        table:
+          schema: smartsell
+          name: default_mapping_specific_user_directory_content
+  - name: lookup_page_masters
+    using:
+      foreign_key_constraint_on:
+        column: company_id
+        table:
+          schema: smartsell
+          name: lookup_page_master
+  - name: lookup_presentation_masters
+    using:
+      foreign_key_constraint_on:
+        column: company_id
+        table:
+          schema: smartsell
+          name: lookup_presentation_master
+  - name: lookup_product_categories
+    using:
+      foreign_key_constraint_on:
+        column: company_id
+        table:
+          schema: smartsell
+          name: lookup_product_category
+  - name: lookup_product_sections
+    using:
+      foreign_key_constraint_on:
+        column: company_id
+        table:
+          schema: smartsell
+          name: lookup_product_section
+  - name: lookup_products
+    using:
+      foreign_key_constraint_on:
+        column: company_id
+        table:
+          schema: smartsell
+          name: lookup_product
+  - name: lookup_quick_links
+    using:
+      foreign_key_constraint_on:
+        column: company_id
+        table:
+          schema: smartsell
+          name: lookup_quick_links
+  - name: mapping_specific_user_directory_contents
+    using:
+      foreign_key_constraint_on:
+        column: company_id
+        table:
+          schema: smartsell
+          name: mapping_specific_user_directory_content
+  - name: mapping_user_directory_contents
+    using:
+      foreign_key_constraint_on:
+        column: company_id
+        table:
+          schema: smartsell
+          name: mapping_user_directory_content
+  - name: mapping_user_home_contents
+    using:
+      foreign_key_constraint_on:
+        column: company_id
+        table:
+          schema: smartsell
+          name: mapping_user_home_content
+  - name: mapping_user_home_directory_contents
+    using:
+      foreign_key_constraint_on:
+        column: company_id
+        table:
+          schema: smartsell
+          name: mapping_user_home_directory_content
+  - name: meta_cards
+    using:
+      foreign_key_constraint_on:
+        column: company_id
+        table:
+          schema: smartsell
+          name: meta_cards
+  - name: meta_daily_posters
+    using:
+      foreign_key_constraint_on:
+        column: company_id
+        table:
+          schema: smartsell
+          name: meta_daily_posters
+  - name: meta_directories
+    using:
+      foreign_key_constraint_on:
+        column: company_id
+        table:
+          schema: smartsell
+          name: meta_directories
+  - name: meta_livestreams
+    using:
+      foreign_key_constraint_on:
+        column: company_id
+        table:
+          schema: smartsell
+          name: meta_livestream
+  - name: meta_pdfs
+    using:
+      foreign_key_constraint_on:
+        column: company_id
+        table:
+          schema: smartsell
+          name: meta_pdfs
+  - name: meta_posters
+    using:
+      foreign_key_constraint_on:
+        column: company_id
+        table:
+          schema: smartsell
+          name: meta_posters
+  - name: meta_recognitions
+    using:
+      foreign_key_constraint_on:
+        column: company_id
+        table:
+          schema: smartsell
+          name: meta_recognitions
+  - name: meta_videos
+    using:
+      foreign_key_constraint_on:
+        column: company_id
+        table:
+          schema: smartsell
+          name: meta_videos
+  - name: user_push_notifications
+    using:
+      foreign_key_constraint_on:
+        column: company_id
+        table:
+          schema: smartsell
+          name: user_push_notifications
+  - name: users
+    using:
+      foreign_key_constraint_on:
+        column: company_id
+        table:
+          schema: smartsell
+          name: users
+  - name: video_libraries
+    using:
+      foreign_key_constraint_on:
+        column: company_id
+        table:
+          schema: smartsell
+          name: video_library

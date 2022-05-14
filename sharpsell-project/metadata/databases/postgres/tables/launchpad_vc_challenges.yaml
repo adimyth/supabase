@@ -1,0 +1,46 @@
+table:
+  schema: launchpad
+  name: vc_challenges
+array_relationships:
+  - name: vc_dashboard_challenges_completion_rates
+    using:
+      foreign_key_constraint_on:
+        column: challenge_id
+        table:
+          schema: launchpad
+          name: vc_dashboard_challenges_completion_rate
+  - name: vc_mapping_challenge_to_categories
+    using:
+      foreign_key_constraint_on:
+        column: id_challenge
+        table:
+          schema: launchpad
+          name: vc_mapping_challenge_to_category
+  - name: vc_mapping_challenge_to_evaluations
+    using:
+      foreign_key_constraint_on:
+        column: id_challenge
+        table:
+          schema: launchpad
+          name: vc_mapping_challenge_to_evaluation
+  - name: vc_params_aggregate_scores
+    using:
+      foreign_key_constraint_on:
+        column: id_challenge
+        table:
+          schema: launchpad
+          name: vc_params_aggregate_score
+  - name: vc_reviewer_aggregate_scores
+    using:
+      foreign_key_constraint_on:
+        column: id_challenge
+        table:
+          schema: launchpad
+          name: vc_reviewer_aggregate_score
+  - name: vc_user_challenges
+    using:
+      foreign_key_constraint_on:
+        column: id_challenge
+        table:
+          schema: launchpad
+          name: vc_user_challenges

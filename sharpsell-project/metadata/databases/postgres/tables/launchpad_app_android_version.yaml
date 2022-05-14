@@ -1,0 +1,3 @@
+table:
+  schema: launchpad
+  name: app_android_version

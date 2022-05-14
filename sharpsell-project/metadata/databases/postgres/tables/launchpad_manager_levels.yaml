@@ -1,0 +1,11 @@
+table:
+  schema: launchpad
+  name: manager_levels
+array_relationships:
+  - name: managers
+    using:
+      foreign_key_constraint_on:
+        column: level_id
+        table:
+          schema: launchpad
+          name: managers

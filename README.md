@@ -47,27 +47,23 @@ The above stack has been tested on the following platforms:
    
     *Ubuntu*
     ```bash
-    apt-get install postgresql postgresql-contrib
-
     apt-get install sbcl unzip libsqlite3-dev make curl gawk freetds-dev libzip-dev
     wget https://github.com/dimitri/pgloader/archive/refs/tags/v3.6.3.zip -O pgloader.zip
     unzip pgloader.zip
     cd pgloader-3.6.3
     make pgloader
 
-    ./build/run/pgloader --version
+    ./build/bin/pgloader --version
     ```
     *MacOS*
     ```bash
-    brew install postgresql
-
     brew install sbcl sqlite make curl gawk freetds
     wget https://github.com/dimitri/pgloader/archive/refs/tags/v3.6.3.zip -O pgloader.zip
     unzip pgloader.zip
     cd pgloader-3.6.3
     make pgloader
 
-    ./build/run/pgloader --version
+    ./build/bin/pgloader --version
     ```
 4. **Install Hasura CLI**
     ```bash
@@ -84,9 +80,12 @@ The above stack has been tested on the following platforms:
 2. Setting up environment variables
    
    Inside `docker` directory, copy the contents of the `.env.example` file to `.env` file and update the values accordingly.
+   ```bash
+   cd docker
+   cp .env.example .env
+   ```
 3. Running all the docker services
     ```bash
-    cd docker
     docker-compose up -d
     ```
     Run the following command to check the status of the services
@@ -99,7 +98,7 @@ The above stack has been tested on the following platforms:
 
    Here, we will migrate the smartsell & launchpad databases to postgres's default database(`postgres`).
 
-   Navigate to the *"pgloader"* directory from the [previous section]()
+   Navigate to the *"pgloader-3.6.3"* directory from the [previous section]()
    ```bash
    # Migrating smartsell from MySQL to Postgres
    ./build/bin/pgloader mysql://{MYSQL_USERNAME}:{MYSQL_PASSWORD}@localhost/smartsell postgresql://postgres:{POSTGRES_PASSWORD}@localhost/postgres
@@ -107,15 +106,15 @@ The above stack has been tested on the following platforms:
    # Migrating launchpad from MySQL to Postgres
    ./build/bin/pgloader mysql://{MYSQL_USERNAME}:{MYSQL_PASSWORD}@localhost/launchpad postgresql://postgres:{POSTGRES_PASSWORD}@localhost/postgres
    ```
-   Refer `docker/.env` for `{POSTGRES_PASSWORD}`
+   Refer `.env` file for `{POSTGRES_PASSWORD}`
 
-   | ***Note***: You might face some errors on MacOS (Intel) when migrating using pgloader. Repeat the process until successful.
+   | ***Note***: You might face some errors when migrating using pgloader. Repeat the above command until successful.
  
 5. Apply existing migrations
     ```bash
     cd ../sharpsell-project/migrations
-
     hasura migrate apply --all-databases --endpoint http://localhost:8081
+    hasura metadata apply --endpoint http://localhost:8081
     ```
 6. Run Hasura console
     ```bash
@@ -125,8 +124,7 @@ The above stack has been tested on the following platforms:
    1. Supabase dashboard - http://localhost:8000
    2. Postgres database - http://localhost:5432
    3. Hasura console - http://localhost:9695
-   4. Kong - http://localhost:8001
-   5. REST APIs - http://localhost:9695/console/api/rest/list - You should be able to see a list of REST APIs 
+   4. REST APIs - http://localhost:9695/console/api/rest/list - You should be able to see a list of REST APIs 
 
 | 👉 *PS - Automation scripts are in progress.*
 

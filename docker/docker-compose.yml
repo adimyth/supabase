@@ -164,7 +164,7 @@ services:
 
   graphql:
     container_name: hasura-graphql-engine
-    image: hasura/graphql-engine:v2.6.2.cli-migrations-v3
+    image: hasura/graphql-engine:v2.6.2
     ports:
     - "8081:8080"
     depends_on:
@@ -187,6 +187,3 @@ services:
       ## webhook authentication mode
       # HASURA_GRAPHQL_AUTH_HOOK: http://localhost:8000/auth/v1/user
       # HASURA_GRAPHQL_AUTH_HOOK_MODE: "GET"
-    volumes:
-      - ../sharpsell-project/metadata:/hasura-metadata
-      - ../sharpsell-project/migrations:/hasura-migrations

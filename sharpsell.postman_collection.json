@@ -1,0 +1,670 @@
+{
+	"info": {
+		"_postman_id": "1e74c712-0650-4ed0-8263-dcb27a5747a9",
+		"name": "sharpsell",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "smartsell",
+			"item": [
+				{
+					"name": "company_apis",
+					"item": [
+						{
+							"name": "addAdminToCompany",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"company_id\": 45,\n    \"selected_admins\": [\n        {\n            \"admin_id\": 26,\n            \"company_id\": 45\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8081/api/rest/smartsell/addAdminToCompany",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"addAdminToCompany"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "fetchCompanyDetails",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/fetchCompanyDetails/:admin_id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"fetchCompanyDetails",
+										":admin_id"
+									],
+									"variable": [
+										{
+											"key": "admin_id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getCompanyProperties",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/getCompanyProperties/:idCompany",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"getCompanyProperties",
+										":idCompany"
+									],
+									"variable": [
+										{
+											"key": "idCompany",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getDistinctUserProperities",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"meta_type\": \"meta1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/getDistinctUserProperities",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"getDistinctUserProperities"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteExistingCompanyProperty",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"idCompany\": 45,\n    \"id\": 138\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/deleteExistingCompanyProperty",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"deleteExistingCompanyProperty"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAppConfigurations",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/getAppConfigurations/:id_company",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"getAppConfigurations",
+										":id_company"
+									],
+									"variable": [
+										{
+											"key": "id_company",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateCompanySignatures",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id_company\": 45,\n    \"signatures\": [\n        {\n            \"label\": \"Name\",\n            \"field\": \"name\",\n            \"readonly\": 0,\n            \"value\": \"\",\n            \"placeholder\": \"#name#\",\n            \"sequence\": 1,\n            \"signature\": 1\n        },\n        {\n            \"label\": \"Mobile number\",\n            \"field\": \"mobile_number\",\n            \"readonly\": 0,\n            \"value\": \"\",\n            \"placeholder\": \"#mobile_number#\",\n            \"sequence\": 2,\n            \"signature\": 1\n        },\n        {\n            \"label\": \"Email\",\n            \"field\": \"email\",\n            \"readonly\": 0,\n            \"value\": \"\",\n            \"placeholder\": \"#email#\",\n            \"signature\": 1,\n            \"sequence\": 3\n        },\n        {\n            \"label\": \"Designation\",\n            \"field\": \"designation\",\n            \"readonly\": 0,\n            \"value\": \"\",\n            \"placeholder\": \"#designation#\",\n            \"signature\": 1,\n            \"sequence\": 4\n        },\n        {\n            \"label\": \"Branch\",\n            \"field\": \"branch\",\n            \"readonly\": 0,\n            \"value\": \"\",\n            \"placeholder\": \"#branch#\",\n            \"sequence\": 5\n        }\n    ],\n    \"signatureformat\": \"#name#\\n#designation#\\n#mobile_number#\\n#email#\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/updateCompanySignature",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"updateCompanySignature"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAllCountriesForCompany",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"search_string\": \"%Ind%\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/getAllCountriesForCompany",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"getAllCountriesForCompany"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "addCountryToCompany",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"company_id\": 47,\n    \"selected_countries\": [\n        {\n            \"country_id\": 98,\n            \"company_id\": 47\n        },\n        {\n            \"country_id\": 98,\n            \"company_id\": 48\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/addCountryToCompany",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"addCountryToCompany"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "index",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/company",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"company"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "destroy",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ids\": [999, 1000]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/company",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"company"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "language_apis",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/languages",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"languages"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "admin_apis",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/admin/index",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"admin",
+										"index"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "store",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"admin\": {\n        \"name\": \"Random test user\",\n        \"username\": \"random_test_user\",\n        \"password\": \"asdfadfadf\",\n        \"id_role\": 1\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/admin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"admin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"admin_id\": 103,\n    \"admin\": {\n        \"name\": \"Random Test User\",\n        \"username\": \"random_test_user\",\n        \"password\": \"asdfadfadfasdfasdf\",\n        \"id_role\": 2\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/admin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"admin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "destory",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"admin_ids\": [103]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/admin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"admin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAllAdminsForCompany",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/getAllAdminsForCompany",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"getAllAdminsForCompany"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getMetaProperties",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/getMetaProperties",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"getMetaProperties"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "timer_challenge_apis",
+					"item": [
+						{
+							"name": "getAllTimerChallenges",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"company_id\": 45\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/getAllTimerChallenges",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"getAllTimerChallenges"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "role_apis",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/role",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"role"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "company_branding_apis",
+					"item": [
+						{
+							"name": "getCompanyBranding",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id_company\": 45\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/getCompanyBranding",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"getCompanyBranding"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "uploadBranding",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/uploadBranding",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"uploadBranding"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "launchpad",
+			"item": []
+		}
+	]
+}

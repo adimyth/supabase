@@ -108,7 +108,9 @@ The above stack has been tested on the following platforms:
    ```
    Refer `.env` file for `{POSTGRES_PASSWORD}`
 
-   | ***Note***: You might face some errors when migrating using pgloader. Repeat the above command until successful.
+   | ***Note***: You might face some errors when migrating using pgloader. 
+   1. In case of `PGLOADER.CONNECTION:DB-CONNECTION-ERROR`, restart the mysql service.
+   2. For other errors, repeat the above command until successful.
  
 5. Apply existing migrations
     ```bash
@@ -121,12 +123,17 @@ The above stack has been tested on the following platforms:
     hasura console --endpoint http://localhost:8081
     ```
 7. Verifying all services are running -
-   1. Supabase dashboard - http://localhost:8000
+   1. Supabase dashboard - http://localhost:3000
    2. Postgres database - http://localhost:5432
-   3. Hasura console - http://localhost:9695
+   3. Hasura console - http://localhost:9695/console
    4. REST APIs - http://localhost:9695/console/api/rest/list - You should be able to see a list of REST APIs 
 
 | 👉 *PS - Automation scripts are in progress.*
+
+8. Verifying apis -
+   We have ported some of the smartsell & launchpad APIs, we can use them to test the functionality of the app.
+   1. Import the provided collection inside `sharpsell.postman_collection.json` inside postman
+   2. Test out the APIs
 
 ---
 

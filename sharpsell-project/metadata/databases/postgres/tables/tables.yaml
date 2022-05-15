@@ -133,7 +133,6 @@
 - "!include launchpad_role.yaml"
 - "!include launchpad_role_has_module.yaml"
 - "!include launchpad_server_health.yaml"
-- "!include launchpad_test_launchpad_table.yaml"
 - "!include launchpad_testing.yaml"
 - "!include launchpad_tiles_content_mapping.yaml"
 - "!include launchpad_unit_completion.yaml"

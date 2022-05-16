@@ -659,6 +659,135 @@
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "core_modules",
+					"item": [
+						{
+							"name": "getAllDirectories",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"company_id\": 45,\n    \"search_string\": \"%mutual%\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/getAllDirectories",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"getAllDirectories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAllPosters",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"company_id\": 45,\n    \"search_string\": \"%NewTest%\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/getAllPosters",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"getAllPosters"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAllVideos",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"company_id\": 45\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/getAllVideos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"getAllVideos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAllPDFs",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"company_id\": 45\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/getAllPDFs",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"getAllPDFs"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		},

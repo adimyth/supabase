@@ -83,6 +83,42 @@
 - definition:
     query:
       collection_name: allowed-queries
+      query_name: smartesell_deleteSelectedDirectories
+  url: smartsell/deleteSelectedDirectories
+  methods:
+    - DELETE
+  name: smartesell_deleteSelectedDirectories
+  comment: Deletes selected directories for all or certain user types
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: smartsell_deleteSelectedPDFs
+  url: smartsell/deleteSelectedPDFs
+  methods:
+    - DELETE
+  name: smartsell_deleteSelectedPDFs
+  comment: Deletes selected set of smartsell PDFs
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: smartsell_deleteSelectedPosters
+  url: smartsell/deleteSelectedPosters
+  methods:
+    - DELETE
+  name: smartsell_deleteSelectedPosters
+  comment: Deletes selected smartsell posters
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: smartsell_deleteSelectedVideos
+  url: smartsell/deleteSelectedVideos
+  methods:
+    - DELETE
+  name: smartsell_deleteSelectedVideos
+  comment: Deletes selected smartsell videos
+- definition:
+    query:
+      collection_name: allowed-queries
       query_name: smartsell_fetchCompanyDetails
   url: smartsell/fetchCompanyDetails/:admin_id
   methods:
@@ -110,12 +146,48 @@
 - definition:
     query:
       collection_name: allowed-queries
+      query_name: smartsell_getAllDirectories
+  url: smartsell/getAllDirectories
+  methods:
+    - POST
+  name: smartsell_getAllDirectories
+  comment: Fetches all directories
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: smartsell_getAllPDFs
+  url: smartsell/getAllPDFs
+  methods:
+    - POST
+  name: smartsell_getAllPDFs
+  comment: Fetches all smartsell PDFs
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: smartsell_getAllPosters
+  url: smartsell/getAllPosters
+  methods:
+    - POST
+  name: smartsell_getAllPosters
+  comment: Fetches all smartsell posters
+- definition:
+    query:
+      collection_name: allowed-queries
       query_name: smartsell_getAllTimerChallenges
   url: smartsell/getAllTimerChallenges
   methods:
     - POST
   name: smartsell_getAllTimerChallenges
   comment: Fetches all timer challenges
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: smartsell_getAllVideos
+  url: smartsell/getAllVideos
+  methods:
+    - POST
+  name: smartsell_getAllVideos
+  comment: Fetches all smartsell videos
 - definition:
     query:
       collection_name: allowed-queries
@@ -188,6 +260,15 @@
     - POST
   name: smartsell_updateCompanySignature
   comment: Updates company signature
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: smartsell_updatePosterElements
+  url: smartsell/updatePosterElements
+  methods:
+    - POST
+  name: smartsell_updatePosterElements
+  comment: Updates or inserts poster elements (text & image)
 - definition:
     query:
       collection_name: allowed-queries

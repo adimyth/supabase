@@ -327,3 +327,146 @@
           		affected_rows
           	}
           }
+      - name: smartesell_deleteSelectedDirectories
+        query: |
+          mutation deleteSelectedDirectories ($user_type_ids: [bigint!]!, $selected_directory_ids: [bigint!]!) {
+          	delete_smartsell_mapping_user_home_directory_content(where: {_and:[{content_type_id:{_eq:1}},{content_id:{_in:$selected_directory_ids}},{user_type_id:{_in:$user_type_ids}}]}) {
+          		affected_rows
+          	}
+          	delete_smartsell_mapping_user_directory_content(where: {_and:[{content_type_id:{_eq:1}},{content_id:{_in:$selected_directory_ids}},{user_type_id:{_in:$user_type_ids}}]}) {
+          		affected_rows
+          	}
+          	delete_smartsell_mapping_user_home_content(where: {_and:[{content_type_id:{_eq:1}},{content_id:{_in:$selected_directory_ids}},{user_type_id:{_in:$user_type_ids}}]}) {
+          		affected_rows
+          	}
+          	delete_smartsell_meta_directories(where: {id:{_in:$selected_directory_ids}}) {
+          		affected_rows
+          	}
+          }
+      - name: smartsell_getAllDirectories
+        query: |
+          query getAllDirectoriesData ($offset: Int = 0, $limit: Int = 5, $company_id: bigint!, $search_string: String = "%") {
+          	directories: smartsell_meta_directories(where: {_and:[{_or:[{name:{_ilike:$search_string}},{description:{_ilike:$search_string}}]},{company_id:{_eq:$company_id}}]}, offset: $offset, limit: $limit, order_by: {updated_at:desc}) {
+          		name
+          		description
+          		thumbnail_url
+          		updated_at
+          	}
+          	total_count: smartsell_meta_directories_aggregate(where: {_and:[{_or:[{name:{_ilike:$search_string}},{description:{_ilike:$search_string}}]},{company_id:{_eq:$company_id}}]}) {
+          		aggregate {
+          			count
+          		}
+          	}
+          }
+      - name: smartsell_deleteSelectedPosters
+        query: |
+          mutation deleteSelectedPosters ($user_type_ids: [bigint!]!, $selected_poster_ids: [bigint!]!) {
+          	delete_smartsell_mapping_user_home_directory_content(where: {_and:[{content_type_id:{_eq:2}},{content_id:{_in:$selected_poster_ids}},{user_type_id:{_in:$user_type_ids}}]}) {
+          		affected_rows
+          	}
+          	delete_smartsell_mapping_user_directory_content(where: {_and:[{content_type_id:{_eq:2}},{content_id:{_in:$selected_poster_ids}},{user_type_id:{_in:$user_type_ids}}]}) {
+          		affected_rows
+          	}
+          	delete_smartsell_meta_posters(where: {id:{_in:$selected_poster_ids}}) {
+          		affected_rows
+          	}
+          	delete_smartsell_meta_posters_text_elements(where: {poster_id:{_in:$selected_poster_ids}}) {
+          		affected_rows
+          	}
+          	delete_smartsell_meta_posters_image_elements(where: {poster_id:{_in:$selected_poster_ids}}) {
+          		affected_rows
+          	}
+          }
+      - name: smartsell_updatePosterElements
+        query: |
+          mutation updatePosterElements ($text_elements: [smartsell_meta_posters_text_elements_insert_input!]!, $image_elements: [smartsell_meta_posters_image_elements_insert_input!]!, $deleteable_text_elements: [bigint!], $deleteable_image_elements: [bigint!]) {
+          	insert_smartsell_meta_posters_text_elements(objects: $text_elements, on_conflict: {constraint:idx_17647_primary,update_columns:[poster_id,default_value,on_by_default,top_margin,left_margin,right_margin,text_alignment,font_family,font_size,font_color]}) {
+          		affected_rows
+          	}
+          	delete_smartsell_meta_posters_text_elements(where: {id:{_in:$deleteable_text_elements}}) {
+          		affected_rows
+          	}
+          	insert_smartsell_meta_posters_image_elements(objects: $image_elements, on_conflict: {constraint:idx_17628_primary,update_columns:[poster_id,on_by_default,top_margin,left_margin,width,height,shape,keep_aspect_ratio]}) {
+          		affected_rows
+          	}
+          	delete_smartsell_meta_posters_image_elements(where: {id:{_in:$deleteable_image_elements}}) {
+          		affected_rows
+          	}
+          }
+      - name: smartsell_getAllVideos
+        query: |
+          query getAllVideos ($offset: Int = 0, $limit: Int = 5, $company_id: bigint!, $search_string: String = "%") {
+          	videos: smartsell_meta_videos(where: {_and:[{_or:[{name:{_ilike:$search_string}},{description:{_ilike:$search_string}}]},{company_id:{_eq:$company_id}}]}, offset: $offset, limit: $limit, order_by: {updated_at:desc}) {
+          		name
+          		description
+          		thumbnail_url
+          		updated_at
+          	}
+          	total_count: smartsell_meta_videos_aggregate(where: {_and:[{_or:[{name:{_ilike:$search_string}},{description:{_ilike:$search_string}}]},{company_id:{_eq:$company_id}}]}) {
+          		aggregate {
+          			count
+          		}
+          	}
+          }
+      - name: smartsell_getAllPosters
+        query: |
+          query getAllPosters ($offset: Int = 0, $limit: Int = 5, $company_id: bigint!, $search_string: String = "%") {
+          	posters: smartsell_meta_posters(where: {_and:[{_or:[{name:{_ilike:$search_string}},{description:{_ilike:$search_string}}]},{company_id:{_eq:$company_id}}]}, offset: $offset, limit: $limit, order_by: {updated_at:desc}) {
+          		name
+          		description
+          		image_url
+          		updated_at
+          	}
+          	total_count: smartsell_meta_posters_aggregate(where: {_and:[{_or:[{name:{_ilike:$search_string}},{description:{_ilike:$search_string}}]},{company_id:{_eq:$company_id}}]}) {
+          		aggregate {
+          			count
+          		}
+          	}
+          }
+      - name: smartsell_getAllPDFs
+        query: |
+          query getAllPDFs ($offset: Int = 0, $limit: Int = 5, $company_id: bigint!, $search_string: String = "%") {
+          	pdfs: smartsell_meta_pdfs(where: {_and:[{_or:[{name:{_ilike:$search_string}},{description:{_ilike:$search_string}}]},{company_id:{_eq:$company_id}}]}, offset: $offset, limit: $limit, order_by: {updated_at:desc}) {
+          		name
+          		description
+          		thumbnail_url
+          		updated_at
+          	}
+          	total_count: smartsell_meta_pdfs_aggregate(where: {_and:[{_or:[{name:{_ilike:$search_string}},{description:{_ilike:$search_string}}]},{company_id:{_eq:$company_id}}]}) {
+          		aggregate {
+          			count
+          		}
+          	}
+          }
+      - name: smartsell_deleteSelectedVideos
+        query: |
+          mutation deleteSelectedVideos ($user_type_ids: [bigint!]!, $selected_video_ids: [bigint!]!) {
+          	delete_smartsell_mapping_user_home_directory_content(where: {_and:[{content_type_id:{_eq:3}},{content_id:{_in:$selected_video_ids}},{user_type_id:{_in:$user_type_ids}}]}) {
+          		affected_rows
+          	}
+          	delete_smartsell_mapping_user_directory_content(where: {_and:[{content_type_id:{_eq:3}},{content_id:{_in:$selected_video_ids}},{user_type_id:{_in:$user_type_ids}}]}) {
+          		affected_rows
+          	}
+          	delete_smartsell_mapping_user_home_content(where: {_and:[{content_type_id:{_eq:3}},{content_id:{_in:$selected_video_ids}},{user_type_id:{_in:$user_type_ids}}]}) {
+          		affected_rows
+          	}
+          	delete_smartsell_meta_videos(where: {id:{_in:$selected_video_ids}}) {
+          		affected_rows
+          	}
+          }
+      - name: smartsell_deleteSelectedPDFs
+        query: |
+          mutation deleteSelectedPDFs ($user_type_ids: [bigint!]!, $selected_video_ids: [bigint!]!) {
+          	delete_smartsell_mapping_user_home_directory_content(where: {_and:[{content_type_id:{_eq:4}},{content_id:{_in:$selected_video_ids}},{user_type_id:{_in:$user_type_ids}}]}) {
+          		affected_rows
+          	}
+          	delete_smartsell_mapping_user_directory_content(where: {_and:[{content_type_id:{_eq:4}},{content_id:{_in:$selected_video_ids}},{user_type_id:{_in:$user_type_ids}}]}) {
+          		affected_rows
+          	}
+          	delete_smartsell_mapping_user_home_content(where: {_and:[{content_type_id:{_eq:4}},{content_id:{_in:$selected_video_ids}},{user_type_id:{_in:$user_type_ids}}]}) {
+          		affected_rows
+          	}
+          	delete_smartsell_meta_pdfs(where: {id:{_in:$selected_video_ids}}) {
+          		affected_rows
+          	}
+          }

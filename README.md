@@ -33,9 +33,9 @@ Supabase is a combination of open source tools. We’re building the features of
 The above stack has been tested on the following platforms:
 * ✅ Ubuntu
 * ✅ MacOS Intel Chip (BigSur)
-* ❌ MacOS M1 Chip (BigSur)
+* ⌛ MacOS M1 Chip (BigSur)
 
-| ***Note*** - We are facing some errors when installing & running `pgloader` on MacOS M1 Chip. Raise a PR if you have any solution
+| ***Note*** - We are facing some errors when migrating data from MySQL to Postgres using `pgloader` on MacOS M1 Chip.
 
 
 ### Pre Requisites
@@ -157,7 +157,9 @@ The above stack has been tested on the following platforms:
 
    | ***Note***: You might face some errors when migrating using pgloader. 
    1. In case of `PGLOADER.CONNECTION:DB-CONNECTION-ERROR`, restart the mysql service.
-   2. For other errors, repeat the above command until successful.
+   2. In case of `QMYND:MYSQL-UNSUPPORTED-AUTHENTICATION` follow the steps mentioned in this [stackoverflow answer](https://stackoverflow.com/a/60789550/9061899)
+   3. In case of `assertion failed: state update should occur from waiters' queue` I have raised a [GitHub issue](https://github.com/dimitri/pgloader/issues/1386) -> will update if some solution arises
+   4. For other errors, repeat the above command until successful.
  
 5. Apply existing migrations
     ```bash

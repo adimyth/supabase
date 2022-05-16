@@ -55,7 +55,7 @@ The above stack has been tested on the following platforms:
 
     ./build/bin/pgloader --version
     ```
-    *MacOS*
+    *MacOS (Intel)*
     ```bash
     brew install sbcl sqlite make curl gawk freetds
     wget https://github.com/dimitri/pgloader/archive/refs/tags/v3.6.3.zip -O pgloader.zip
@@ -65,6 +65,53 @@ The above stack has been tested on the following platforms:
 
     ./build/bin/pgloader --version
     ```
+
+   *Macos (M1)*
+   1. Enable Rosetta for Terminal on M1 Mac
+      ```bash
+      /usr/sbin/softwareupdate --install-rosetta --agree-to-license
+      ```
+      * Select the app(Terminal) in the Finder.
+      * Right click on the app(Terminal) and select Get Info.
+      * In `General`, check the `Open using Rosetta` check-box.
+      * Restart the terminal.
+      * Running `arch` should give `i386`
+   2. Install `xcode`
+      ```bash
+      xcode-select --install
+      ```
+   3. Uninstall `arm64` brew
+      ```bash
+      which brew # /opt/homebrew
+
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)"
+      ```
+   4. Install `intel` brew
+      ```bash
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+      git -C $(brew --repository homebrew/core) checkout master
+
+      which brew # /usr/local/bin/brew
+      ```
+   5. Install & symlink `openssl`
+      ```bash
+      brew install openssl
+
+      sudo ln -s /usr/local/opt/openssl@3/lib/libcrypto.dylib /usr/local/lib/libcrypto.dylib
+
+      sudo ln -s /usr/local/opt/openssl@3/lib/libssl.dylib /usr/local/lib/libssl.dylib
+      ```
+   6. Install pgloader
+      ```bash
+      brew install sbcl sqlite make curl gawk freetds
+      wget https://github.com/dimitri/pgloader/archive/refs/tags/v3.6.3.zip -O pgloader.zip
+      unzip pgloader.zip
+      cd pgloader-3.6.3
+      make pgloader
+
+      ./build/bin/pgloader --version
+      ```
 4. **Install Hasura CLI**
     ```bash
     curl -L https://github.com/hasura/graphql-engine/raw/stable/cli/get.sh | bash

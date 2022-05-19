@@ -13,3 +13,12 @@ array_relationships:
         table:
           schema: smartsell
           name: meta_videos_tags
+  - name: meta_videos_to_mapping_specific_user_directory_content
+    using:
+      manual_configuration:
+        remote_table:
+          schema: smartsell
+          name: mapping_specific_user_directory_content
+        insertion_order: null
+        column_mapping:
+          id: content_id

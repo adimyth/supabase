@@ -2,7 +2,8 @@
 	"info": {
 		"_postman_id": "1e74c712-0650-4ed0-8263-dcb27a5747a9",
 		"name": "sharpsell",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2245570"
 	},
 	"item": [
 		{
@@ -782,6 +783,440 @@
 										"rest",
 										"smartsell",
 										"getAllPDFs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateIOSAppRelease",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"app_id\": 1,\n    \"app_version\": 1,\n    \"company_id\": 45,\n    \"admin_id\": 27\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/updateIOSAppRelease",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"updateIOSAppRelease"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateAndroidAppRelease",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"app_id\": 1,\n    \"app_version\": 1,\n    \"company_id\": 45,\n    \"admin_id\": 27\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/updateAndroidAppRelease",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"updateAndroidAppRelease"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteLiveStream",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"company_id\": 45,\n    \"id\": 16\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/deleteLiveStream",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"deleteLiveStream"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAllQuickLinks",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"company_id\": 45\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/getAllQuickLinks",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"getAllQuickLinks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteSelectedQuickLinks",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"selected_quick_link_ids\": [1, 2, 3, 4, 5]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/deleteSelectedQuickLinks",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"deleteSelectedQuickLinks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateQuickLink",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"company_id\": 45,\n    \"quick_link_id\": 17,\n    \"message\": \"Calculate latest interest rates\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/updateQuickLink",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"updateQuickLink"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteSelectedCards",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"selected_card_ids\": [1]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/deleteSelectedCards",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"deleteSelectedCards"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAllUserTypeForCard",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"company_id\": 45,\n    \"card_id\": 21\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/getAllUserTypeForCard",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"getAllUserTypeForCard"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAllPushNotifications",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"company_id\": 45\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/getAllPushNotifications",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"getAllPushNotifications"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteSelectedUserPushNotifications",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"selected_user_push_notification_ids\": [1, 2, 3]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/deleteSelectedUserPushNotifications",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"deleteSelectedUserPushNotifications"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAllUserTypesForPresentations",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"company_id\": 45,\n    \"presentation_id\": 23\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/getAllUserTypesForPresentations",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"getAllUserTypesForPresentations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "addSelectedDirectoriesToHomeDirectory",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"directories\": [\n        {\n            \"user_type_id\": 1,\n            \"company_id\": 45,\n            \"content_id\": 823,\n            \"content_type_id\": 1,\n            \"sequence\": 1\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/addSelectedDirectoriesToHomeDirectory",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"addSelectedDirectoriesToHomeDirectory"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getSpecificUserContent",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"user_type_id\": 380,\n  \"id\": 325\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/getSpecificUserContent",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"getSpecificUserContent"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "addNewVideo",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"name\",\n    \"company_id\": 45,\n    \"description\": \"description\",\n    \"share_text\": \"share_text\",\n    \"reg_name\": \"reg_name\",\n    \"reg_description\": \"reg_description\",\n    \"reg_share_text\": \"reg_share_text\",\n    \"thumbnail_url\": \"thumbnail_url\",\n    \"video_url\": \"video_url\",\n    \"language_id\": 1,\n    \"is_public\": 0\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/rest/smartsell/addNewVideo",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"rest",
+										"smartsell",
+										"addNewVideo"
 									]
 								}
 							},

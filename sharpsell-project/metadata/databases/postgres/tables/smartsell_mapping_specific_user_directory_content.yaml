@@ -5,3 +5,39 @@ object_relationships:
   - name: company
     using:
       foreign_key_constraint_on: company_id
+  - name: mapping_specific_user_directory_content_to_meta_directories
+    using:
+      manual_configuration:
+        remote_table:
+          schema: smartsell
+          name: meta_directories
+        insertion_order: null
+        column_mapping:
+          content_id: id
+  - name: mapping_specific_user_directory_content_to_meta_pdfs
+    using:
+      manual_configuration:
+        remote_table:
+          schema: smartsell
+          name: meta_pdfs
+        insertion_order: null
+        column_mapping:
+          content_id: id
+  - name: mapping_specific_user_directory_content_to_meta_posters
+    using:
+      manual_configuration:
+        remote_table:
+          schema: smartsell
+          name: meta_posters
+        insertion_order: null
+        column_mapping:
+          content_id: id
+  - name: mapping_specific_user_directory_content_to_meta_videos
+    using:
+      manual_configuration:
+        remote_table:
+          schema: smartsell
+          name: meta_videos
+        insertion_order: null
+        column_mapping:
+          content_id: id

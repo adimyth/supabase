@@ -5,3 +5,13 @@ object_relationships:
   - name: company
     using:
       foreign_key_constraint_on: company_id
+array_relationships:
+  - name: meta_directories_to_mapping_specific_user_directory_content
+    using:
+      manual_configuration:
+        remote_table:
+          schema: smartsell
+          name: mapping_specific_user_directory_content
+        insertion_order: null
+        column_mapping:
+          id: content_id

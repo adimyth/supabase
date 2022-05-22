@@ -1,3 +1,7 @@
+- "!include auth_audit_log_entries.yaml"
+- "!include auth_instances.yaml"
+- "!include auth_refresh_tokens.yaml"
+- "!include auth_users.yaml"
 - "!include launchpad_admin.yaml"
 - "!include launchpad_admin_has_companies.yaml"
 - "!include launchpad_admin_session.yaml"

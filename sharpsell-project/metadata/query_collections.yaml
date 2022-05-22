@@ -470,3 +470,211 @@
           		affected_rows
           	}
           }
+      - name: smartsell_updateIOSAppRelease
+        query: |
+          mutation updateIOSAppRelease ($app_id: Int, $app_version: Int, $killable: smallint, $warnable: smallint, $admin_id: smallint!, $company_id: bigint!) {
+          	update_smartsell_app_ios_version(_set: {app_id:$app_id,killable:$killable,warnable:$warnable,app_version:$app_version,admin_id:$admin_id,company_id:$company_id}, where: {}) {
+          		affected_rows
+          	}
+          }
+      - name: smartsell_updateAndroidAppRelease
+        query: |
+          mutation updateAndroidAppRelease ($app_id: Int, $app_version: Int, $killable: smallint, $warnable: smallint, $admin_id: smallint!, $company_id: bigint!) {
+          	update_smartsell_app_android_version(_set: {app_id:$app_id,killable:$killable,warnable:$warnable,app_version:$app_version,admin_id:$admin_id,company_id:$company_id}, where: {}) {
+          		affected_rows
+          	}
+          }
+      - name: smartsell_deleteLiveStream
+        query: |
+          mutation deleteLiveStream ($id: Int!, $company_id: bigint!) {
+          	delete_smartsell_meta_livestream(where: {_and:[{id:{_eq:$id}},{company_id:{_eq:$company_id}}]}) {
+          		affected_rows
+          	}
+          }
+      - name: smartsell/getAllQuickLinks
+        query: |
+          query getAllQuickLink ($offset: Int = 0, $limit: Int = 5, $company_id: bigint!, $search_string: String = "%") {
+          	quick_links: smartsell_lookup_quick_links(where: {_and:[{quick_link_title:{_ilike:$search_string}},{company_id:{_eq:$company_id}}]}, offset: $offset, limit: $limit, order_by: {sequence:desc}) {
+          		sequence
+          		quick_link_title
+          		quick_link_message
+          		quick_link_action_text
+          		quick_link_url
+          		quick_link_id
+          		sequence
+          	}
+          	total_count: smartsell_lookup_quick_links_aggregate(where: {_and:[{quick_link_title:{_ilike:$search_string}},{company_id:{_eq:$company_id}}]}, offset: $offset, limit: $limit, order_by: {sequence:desc}) {
+          		aggregate {
+          			count
+          		}
+          	}
+          }
+      - name: smartsell_deleteSelectedQuickLinks
+        query: |
+          mutation deleteSelectedQuickLinks ($selected_quick_link_ids: [Int!]!) {
+          	delete_smartsell_lookup_quick_links(where: {quick_link_id:{_in:$selected_quick_link_ids}}) {
+          		affected_rows
+          	}
+          }
+      - name: smartsell_updateQuickLink
+        query: |
+          mutation updateQuickLink ($quick_link_id: Int!, $title: String, $message: String, $action: String, $url: String, $sequence: Int, $company_id: bigint!) {
+          	update_smartsell_lookup_quick_links(_set: {quick_link_title:$title,quick_link_message:$message,quick_link_action_text:$action,sequence:$sequence,quick_link_url:$url}, where: {_and:[{quick_link_id:{_eq:$quick_link_id}},{company_id:{_eq:$company_id}}]}) {
+          		affected_rows
+          	}
+          }
+      - name: smartsell_deleteSelectedCards
+        query: |
+          mutation deleteSelectedCards ($selected_card_ids: [bigint!]!) {
+          	delete_smartsell_group_cards(where: {card_id:{_in:$selected_card_ids}}) {
+          		affected_rows
+          	}
+          	delete_smartsell_meta_cards(where: {id:{_in:$selected_card_ids}}) {
+          		affected_rows
+          	}
+          	delete_smartsell_meta_cards_text_elements(where: {id:{_in:$selected_card_ids}}) {
+          		affected_rows
+          	}
+          	delete_smartsell_meta_cards_image_elements(where: {id:{_in:$selected_card_ids}}) {
+          		affected_rows
+          	}
+          }
+      - name: smartsell_getAllUserTypeForCard
+        query: |
+          query getAllUserTypeForCard ($card_id: bigint!, $company_id: bigint!) {
+          	all_user_types: smartsell_company_groups(where: {company_id:{_eq:$company_id}}, order_by: {id:asc}) {
+          		id
+          		name
+          		user_type: name
+          		filter_data
+          	}
+          	user_types: smartsell_company_groups(where: {company_groups_to_group_cards:{card_id:{_eq:$card_id}}}, order_by: {id:asc}) {
+          		id
+          		name
+          		created_at
+          		updated_at
+          	}
+          }
+      - name: smartsell_getAllPushNotifications
+        query: |
+          query getAllPushNotifications ($offset: Int = 0, $limit: Int = 5, $company_id: bigint!, $search_string: String = "%") {
+          	push_notifications: smartsell_user_push_notifications(where: {_and:[{_or:[{title:{_ilike:$search_string}},{topic:{_ilike:$search_string}},{action_target:{_ilike:$search_string}}]},{company_id:{_eq:$company_id}}]}, offset: $offset, limit: $limit, order_by: {updated_at:desc}) {
+          		id
+          		title
+          		topic
+          		action_target
+          		scheduled_date
+          		updated_at
+          	}
+          	total_count: smartsell_user_push_notifications_aggregate(where: {_and:[{_or:[{title:{_ilike:$search_string}},{topic:{_ilike:$search_string}},{action_target:{_ilike:$search_string}}]},{company_id:{_eq:$company_id}}]}, offset: $offset, limit: $limit, order_by: {updated_at:desc}) {
+          		aggregate {
+          			count
+          		}
+          	}
+          }
+      - name: smartsell_deleteSelectedUserPushNotifications
+        query: |
+          mutation deleteSelectedUserPushNotifications ($selected_user_push_notification_ids: [bigint!]!) {
+          	delete_smartsell_user_push_notifications(where: {id:{_in:$selected_user_push_notification_ids}}) {
+          		affected_rows
+          	}
+          }
+      - name: smartsell_getAllUserTypesForPresentations
+        query: |
+          query getAllUserTypesForPresentations ($presentation_id: Int!, $company_id: bigint!) {
+          	all_user_types: smartsell_company_groups(where: {company_id:{_eq:$company_id}}, order_by: {id:asc}) {
+          		id
+          		name
+          		user_type: name
+          		filter_data
+          	}
+          	user_types: smartsell_company_groups(where: {company_groups_to_group_presentations:{presentation_id:{_eq:$presentation_id}}}, order_by: {id:asc}) {
+          		id
+          		name
+          		created_at
+          		updated_at
+          	}
+          }
+      - name: smartsell_addSelectedDirectoriesToHomeDirectory
+        query: |
+          mutation addSelectedDirectoriesToHomeDirectory ($directories: [smartsell_mapping_user_home_directory_content_insert_input!]!) {
+          	insert_smartsell_mapping_user_home_directory_content(objects: $directories) {
+          		affected_rows
+          	}
+          }
+      - name: smartsell_getSpecificUserContent
+        query: |
+          query getSpecificUserContent ($user_type_id: bigint!, $id: bigint!) {
+          	directory: smartsell_meta_directories(where: {_and:[{meta_directories_to_mapping_specific_user_directory_content:{directory_id:{_eq:$id}}},{meta_directories_to_mapping_specific_user_directory_content:{user_type_id:{_eq:$user_type_id}}},{meta_directories_to_mapping_specific_user_directory_content:{content_type_id:{_eq:1}}}]}) {
+          		id
+          		company_id
+          		name
+          		description
+          		thumbnail_url
+          		display_type_id
+          		confidential
+          		screenshot
+          		only_folder_allowed
+          		sequence: meta_directories_to_mapping_specific_user_directory_content {
+          			sequence
+          		}
+          	}
+          	poster: smartsell_meta_posters(where: {_and:[{meta_posters_to_mapping_specific_user_directory_content:{directory_id:{_eq:$id}}},{meta_posters_to_mapping_specific_user_directory_content:{user_type_id:{_eq:$user_type_id}}},{meta_posters_to_mapping_specific_user_directory_content:{content_type_id:{_eq:2}}}]}) {
+          		id
+          		company_id
+          		name
+          		description
+          		share_text
+          		reg_name
+          		reg_description
+          		thumbnail_url
+          		image_url
+          		sequence: meta_posters_to_mapping_specific_user_directory_content {
+          			sequence
+          		}
+          	}
+          	video: smartsell_meta_videos(where: {_and:[{meta_videos_to_mapping_specific_user_directory_content:{directory_id:{_eq:$id}}},{meta_videos_to_mapping_specific_user_directory_content:{user_type_id:{_eq:$user_type_id}}},{meta_videos_to_mapping_specific_user_directory_content:{content_type_id:{_eq:3}}}]}) {
+          		id
+          		company_id
+          		name
+          		description
+          		share_text
+          		reg_name
+          		reg_description
+          		thumbnail_url
+          		video_url
+          		is_public
+          		sequence: meta_videos_to_mapping_specific_user_directory_content {
+          			sequence
+          		}
+          	}
+          	pdf: smartsell_meta_pdfs(where: {_and:[{meta_pdfs_to_mapping_specific_user_directory_content:{directory_id:{_eq:$id}}},{meta_pdfs_to_mapping_specific_user_directory_content:{user_type_id:{_eq:$user_type_id}}},{meta_pdfs_to_mapping_specific_user_directory_content:{content_type_id:{_eq:4}}}]}) {
+          		id
+          		company_id
+          		name
+          		description
+          		share_text
+          		reg_name
+          		reg_description
+          		thumbnail_url
+          		pdf_url
+          		language_id
+          		sequence: meta_pdfs_to_mapping_specific_user_directory_content {
+          			sequence
+          		}
+          	}
+          }
+      - name: smartsell_addNewVideo
+        query: |
+          mutation addNewVideo ($name: String!, $description: String!, $share_text: String, $thumbnail_url: String = "", $video_url: String = "", $language_id: Int, $reg_name: String, $reg_description: String, $reg_share_text: String, $company_id: bigint, $is_public: Int = 0) {
+          	insert_smartsell_meta_videos_one(object: {name:$name,company_id:$company_id,description:$description,share_text:$share_text,reg_name:$reg_name,reg_description:$reg_description,reg_share_text:$reg_share_text,thumbnail_url:$thumbnail_url,video_url:$video_url,language_id:$language_id,is_public:$is_public}) {
+          		id
+          	}
+          }
+      - name: smartsell_updateVideo
+        query: |
+          mutation updateVideo ($id: bigint, $name: String!, $description: String!, $share_text: String, $thumbnail_url: String = "", $video_url: String = "", $language_id: Int, $reg_name: String, $reg_description: String, $reg_share_text: String, $company_id: bigint, $is_public: Int = 0) {
+          	update_smartsell_meta_videos_by_pk(_set: {name:$name,company_id:$company_id,description:$description,share_text:$share_text,reg_name:$reg_name,reg_description:$reg_description,reg_share_text:$reg_share_text,thumbnail_url:$thumbnail_url,video_url:$video_url,language_id:$language_id,is_public:$is_public}, pk_columns: {id:{_eq:$id}}) {
+          		id
+          	}
+          }

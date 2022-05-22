@@ -1,3 +1,13 @@
 table:
   schema: smartsell
   name: group_cards
+object_relationships:
+  - name: group_cards_to_company_groups
+    using:
+      manual_configuration:
+        remote_table:
+          schema: smartsell
+          name: company_groups
+        insertion_order: null
+        column_mapping:
+          group_id: id

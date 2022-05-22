@@ -6,6 +6,24 @@ object_relationships:
     using:
       foreign_key_constraint_on: company_id
 array_relationships:
+  - name: company_groups_to_group_cards
+    using:
+      manual_configuration:
+        remote_table:
+          schema: smartsell
+          name: group_cards
+        insertion_order: null
+        column_mapping:
+          id: group_id
+  - name: company_groups_to_group_presentations
+    using:
+      manual_configuration:
+        remote_table:
+          schema: smartsell
+          name: group_presentations
+        insertion_order: null
+        column_mapping:
+          id: group_id
   - name: company_user_group_configs
     using:
       foreign_key_constraint_on:
